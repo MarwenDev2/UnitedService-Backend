@@ -24,8 +24,8 @@ public interface DemandeCongeRepository extends JpaRepository<DemandeConge, Long
     @Query("SELECT COUNT(d) FROM DemandeConge d WHERE d.status IN :statuses AND d.worker.id = :workerId")
     int countByWorkerIdAndStatusIn(@Param("workerId") Long workerId, @Param("statuses") List<Status> statuses);
 
-    @Query("SELECT COUNT(d) FROM DemandeConge d WHERE FUNCTION('MONTH', d.dateDemande) = :month AND FUNCTION('YEAR', d.dateDemande) = FUNCTION('YEAR', CURRENT_DATE)")
-    int countByMonth(@Param("month") int month);
+    @Query("SELECT COUNT(d) FROM DemandeConge d WHERE FUNCTION('MONTH', d.dateDemande) = :month AND FUNCTION('YEAR', d.dateDemande) = :year")
+    int countByMonth(@Param("month") int month, @Param("year") int year);
 
     @Query("SELECT d FROM DemandeConge d WHERE d.dateDemande >= :since ORDER BY d.dateDemande DESC")
     List<DemandeConge> findRecentConge(@Param("since") LocalDate since);

@@ -89,9 +89,9 @@ class DemandeCongeController {
         return congeService.countByType(type);
     }
 
-    @GetMapping("/count/month/{month}")
-    public int countByMonth(@PathVariable int month) {
-        return congeService.countByMonth(month);
+    @GetMapping("/count-by-month/{month}/{year}")
+    public int countByMonth(@PathVariable int month, @PathVariable int year) {
+        return congeService.countByMonth(month, year);
     }
 
     @GetMapping("/has-pending/{workerId}")

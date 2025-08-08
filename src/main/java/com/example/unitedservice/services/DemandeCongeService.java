@@ -74,8 +74,8 @@ public class DemandeCongeService {
         return demandeCongeRepository.countByType(type);
     }
 
-    public int countByMonth(int month) {
-        return demandeCongeRepository.countByMonth(month);
+    public int countByMonth(int month, int year) {
+        return demandeCongeRepository.countByMonth(month, year);
     }
 
     public int countAll() {
